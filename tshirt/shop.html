@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Shop</title>
+		<link rel="stylesheet" href="static/style.css">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"  integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+		<link href="https://pro.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+		<style>
+			body {
+				padding-top: 75px;
+			}
+			.pagination .page-link {
+				color: #003B73;
+				border: none;
+				margin: 0 5px;
+				border-radius: 4px;
+				font-weight: 600;
+				transition: background-color 0.2s ease, color 0.2s ease;
+			}
+			.pagination .page-link:hover {
+				background-color: #f0f0f0;
+				color: #ff6f61;
+			}
+			.pagination .page-item.active .page-link {
+				background-color: #003B73;
+				color: white;
+			}
+			.pagination .page-item.disabled .page-link {
+				color: #ccc;
+				background-color: transparent;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- NAVIGATION -->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="home.html">
+					<img src="static/images/two-kids-logo.png" alt="Logo" class="navbar-logo">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"                                         aria-expanded="false" aria-label="Toggle navigation">
+					<span><i id="bar" class="fa-solid fa-bars"></i></span>
+				</button>
+				 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					 <ul class="navbar-nav ms-auto">
+						 <li class="nav-item">
+							 <a class="nav-link" href="home.html">Home</a>
+						 </li>                                 
+						 <li class="nav-item">
+							 <a class="nav-link active" href="#">Shop</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="reviews.html">Reviews</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="about.html">About</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="contact.html">Contact</a>
+						 </li>
+						 <li class="nav-item d-flex gap-3 ms-3 align-items-center">
+							 <a class="nav-link" href="cart.html">
+								 <i class="fa-solid fa-cart-shopping"></i>
+							 </a>
+						 </li>
+					 </ul>
+				 </div>
+			</div>
+		</nav>
+
+		<section id="shop" class="w-100 py-5">
+			<div class="container mb-5">
+				<h2 class="section-title text-center mb-4"><span>Shop All Products</span></h2>
+			</div>
+
+			<div class="container">
+				<div class="row g-4 justify-content-center">
+					<!--Product 1 -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product-card text-center">
+							<img onclick="window.location.href='product.html';" class="img-fluid mb-3" src="static/apparel.png" alt="Featured Product">
+							<div class="star-rating mb-2">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+							</div>
+							<h5 class="p-name">Design Name</h5>
+							<h4 class="p-price">$5.00</h4>
+							<button class="buy-btn text-uppercase">Buy Now</button>
+						</div>
+					</div>
+
+					<!-- Product 2 -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product-card text-center">
+							<img onclick="window.location.href='product.html';" class="img-fluid mb-3" src="static/apparel.png" alt="Featured Product">
+							<div class="star-rating mb-2">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+							</div>
+							<h5 class="p-name">Design Name</h5>
+							<h4 class="p-price">$5.00</h4>
+							<button class="buy-btn text-uppercase">Buy Now</button>
+						</div>
+					</div>
+
+					<!--Product 3 -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product-card text-center">
+							<img onclick="window.location.href='product.html';" class="img-fluid mb-3" src="static/apparel.png" alt="Featured Product">
+							<div class="star-rating mb-2">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+							</div>
+							<h5 class="p-name">Design Name</h5>
+							<h4 class="p-price">$5.00</h4>
+							<button class="buy-btn text-uppercase">Buy Now</button>
+						</div>
+					</div>
+
+					<!--Product 4 -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+						<div class="product-card text-center">
+							<img onclick="window.location.href='product.html';" class="img-fluid mb-3" src="static/apparel.png" alt="Featured Product">
+							<div class="star-rating mb-2">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+							</div>
+							<h5 class="p-name">Design Name</h5>
+							<h4 class="p-price">$5.00</h4>
+							<button class="buy-btn text-uppercase">Buy Now</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container mt-5">
+				<nav aria-label="Shop Page Navigation">
+					<ul class="pagination justify-content-center">
+						<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+						<li class="page-item active"><a class="page-link" href="#">1</a></li>
+						<li class="page-item"><a class="page-link" href="#">2</a>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+					</ul>
+				</nav>
+			</div>
+		</section>
+
+
+
+		<!-- footer -->
+		<footer class="mt-5 py-4" style="background-color: #003B73; color: #ffffff;">
+			<div class="container">
+
+				<div class="row mb-3 justify-content-between">
+					<div class="col-lg-5 col-md-6 col-12 mb-3 mb-md-0">
+						<img src="static/images/two-kids-logo.png" alt="Two Kids Design Logo" class="mb-2" style="max-width: 120px;">
+						<p class="small mb-0 opacity-75">At Two Kids Design, we create fun and professionally crafted digital products for crafters, entrepreneurs, and print-on-demand businesses.</p>
+					</div>
+
+					<div class="col-lg-3 col-md-6 col-12">
+						<h5 class="mb-2 fw-bold text-uppercase">Need Help?</h5>
+						<ul class="list-unstyled footer-links text-uppercase small mb-0">
+							<li><a href="contact.html" class="contact-link text-decoration-none">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="my-3 opacity-25">
+
+				<div class="row align-items-center text-center text-md-start">
+					<div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0">
+						<img src="static/images/Pay online securely payment methods options.png" alt="Accepted Payment Methods" style="width: 200px; max-height: 100px;">
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0 text-md-center">
+						<p class="mb-0 small opacity-75">© 2026 Two Kids Design. All Rights Reserved.</p>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-12 text-md-end social-icons">
+						<a href="https://web.facebook.com/TwoKidsDesign/" class="text-white me-2"><i class="fa-brands fa-facebook"></i></a>
+						<a href="https://www.instagram.com/designtwokids/" class="text-white"><i class="fa-brands fa-square-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+			integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+			integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+			crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
+	</body>
+</html>
+
+

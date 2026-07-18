@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+	              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		      <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+		      <title>About</title>
+		      <link rel="stylesheet" href="static/style.css">
+
+		      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+		      <link href="https://pro.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+		      <style>
+			body {
+				padding-top: 75px;
+			}
+			.text-brand-dark {
+				color: #003B73;
+			}
+			.text-brand-accent {
+				color: #ff6f61;
+			}
+			.bg-brand-accent {
+				background-color: #ff6f61;
+			}
+			.feature-icon {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				background-color: #f8f9fa;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 2rem;
+				color: #ff6f61;
+				margin: 0 auto 1.5rem;
+				transition: transform 0.3s ease, background-color 0.3s ease;
+			}
+			.feature-box:hover .feature-icon {
+				transform: translateY(-5px);
+				background-color: #ff6f61;
+				color: white;
+			}
+			.btn-brand {
+				background-color: #ff6f61;
+				color: white;
+				padding: 10px 25px;
+				border-radius: 25px;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				border: 2px solid #ff6f61;
+			}
+			.btn-brand:hover {
+				background-color: transparent;
+				color: #ff6f61;
+			}
+		      </style>
+	</head>
+	<body>
+		<!-- NAVIGATION -->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="home.html">   
+					<img src="static/images/two-kids-logo.png" alt="Logo" class="navbar-logo">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span><i id="bar" class="fa-solid fa-bars"></i></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="home.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="shop.html">Shop</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="reviews.html">Reviews</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="#">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contact</a>
+						</li>
+						<li class="nav-item d-flex gap-3 ms-3 align-items-center">
+							<a class="nav-link" href="cart.html">
+								<i class="fa-solid fa-cart-shopping"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- HERO SECTION -->
+		<section class="container py-5 my-5">
+			<div class="row align-items-center">
+				<div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+					<h6 class="text-brand-accent text-uppercase fw-bold tracking-wide mb-2">Our Story</h6>
+					<h1 class="display-4 fw-bold text-brand-dark mb-4">Crafting Creativity for Your Business.</h1>
+					<p class="lead text=muted mb-4">
+					At Two Kids Design, we believe that great design should be accessible, fun, and easy to use. We specialize in creating high-quality, professionally crafted digital products tailored for crafters, entrepreneurs, and print-on-demand businesses.
+					</p>
+					<p class="text-muted mb-4">
+					Whether you are firing up your Cricut for a weekend hobby project or launching a brand new apparel line, our mission is to provide you with pixel-perfect vectors and illustrations that make your products shine.
+					</p>
+					<a href="shop.html" class="btn btn-brand text-uppercase px-4 py-2 mt-2">Explore Our Designs</a>
+				</div>
+				<div class="col-lg-6 text-center">
+					         <!-- Placeholder for a team photo, workspace, or a beautiful illustration -->
+						 <img src="static/images/placeholders/Elegant t-shirt display mockup.png" alt="Two Kids Design Workspace" class="img-fluid rounded shadow-lg">
+				</div>
+			</div>
+		</section>
+
+		<!-- WHY CHOOSE US SECTION -->
+		<section class="bg-light py-5">
+			<div class="container py-5">
+				<div class="text-center mb-5">
+					<h2 class="fw-bold text-brand-dark"> Why Choose Two Kids Design?</h2>
+					<p class="text-muted">Designed with crafters and business owners in mind.</p>
+				</div>
+
+				<div class="row g-4 text-center">
+					<!-- Feature 1 -->
+					<div class="col-lg-4 col-md-6">
+						<div class="feature-box p-4">
+							<div class="feature-icon shadow-sm">
+								<i class="fa-solid fa-wand-magic-sparkles"></i>
+							</div>
+							<h5 class="fw-bold text-brand-dark mb-3">Professionally Crafted</h5>
+							<p class="text-muted">
+							Every SVG and vector file is meticulously designed with clean paths and grouped layers for completely flawless cutting and printing.
+							</p>
+						</div>
+					</div>
+
+					<!-- Feature 2 -->
+					<div class="col-lg-4 col-md-6">
+						<div class="feature-box p-4">
+							<div class="feature-icon shadow-sm">
+								<i class="fa-solid fa-shop"></i>             
+							</div>
+							<h5 class="fw-bold text-brand-dark mb-3">Commercial Friendly</h5>
+							<p class="text-muted">We want to see your business grow! Our flexible commercial licenses mean you can confidently use our designs on your physical products.
+							</p>
+						</div>
+					</div>
+
+					<!-- Feature 3 -->
+					<div class="col-lg-4 col-md-6">
+						<div class="feature-box p-4">
+							<div class="feature-icon shadow-sm">
+								<i class="fa-solid fa-cloud-arrow-down"></i>
+							</div>
+							<h5 class="fw-bold text-brand-dark mb-3">Instant Access</h5>
+							<p class="text-muted">No waiting for shipping. As soon as you check out, your high-resolution files (PNG, SVG, AI, are ready to download and use instantly.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CALL TO ACTION -->
+		<section class="container py-5 my-4 text-center">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<h2 class="fw-bold text-brand-dark mb-3">Ready to create something amazing?</h2>
+					<p class="text-muted mb-4">Browse our latest collections of apparel designs, home decor graphics, and stationery vectors.</p>
+					<a href="shop.html" class="btn btn-brand px-5 py-2">Go to Shop</a>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- footer -->
+		<footer class="mt-5 py-4" style="background-color: #003B73; color: #ffffff;">
+			<div class="container">
+
+				<div class="row mb-3 justify-content-between">
+					<div class="col-lg-5 col-md-6 col-12 mb-3 mb-md-0">
+						<img src="static/images/two-kids-logo.png" alt="Two Kids Design Logo" class="mb-2" style="max-width: 120px;">
+						<p class="small mb-0 opacity-75">At Two Kids Design, we create fun and professionally crafted digital products for crafters, entrepreneurs, and print-on-demand businesses.</p>
+					</div>
+
+					<div class="col-lg-3 col-md-6 col-12">
+						<h5 class="mb-2 fw-bold text-uppercase">Need Help?</h5>
+						<ul class="list-unstyled footer-links text-uppercase small mb-0">
+							<li><a href="contact.html" class="contact-link text-decoration-none">Contact Us</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="my-3 opacity-25"> 
+
+				<div class="row align-items-center text-center text-md-start">
+					<div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0">
+						<img src="static/images/Pay online securely payment methods options.png" alt="Accepted Payment Methods" style="width: 200px; max-height: 100px;">
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0 text-md-center">
+						<p class="mb-0 small opacity-75">© 2026 Two Kids Design. All Rights Reserved.</p>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-12 text-md-end social-icons">
+						<a href="https://web.facebook.com/TwoKidsDesign/" class="text-white me-2"><i class="fa-brands fa-facebook"></i></a>
+						<a href="https://www.instagram.com/designtwokids/" class="text-white"><i class="fa-brands fa-square-instagram"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+			integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+			crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+			integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+			crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
+	</body>
+</html>
+
