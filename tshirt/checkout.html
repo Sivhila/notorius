@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	 <head>
+		 <meta charset="UTF-8">                
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <title>Checkout</title>
+		 <link rel="stylesheet" href="static/style.css">
+		 
+		 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+		 <link href="https://pro.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+		 <style>
+			body { padding: 20px; }
+			.form-group { margin-bottom: 15px; }
+			input { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
+			button { width: 100%; padding: 12px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+			button:hover { background: #45a049; }
+		 </style>
+	 
+	 </head>
+	 <body>
+		 <!-- NAVIGATION -->
+		 <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+			 <div class="container">
+				 <a class="navbar-brand" href="home.html">
+					 <img src="static/images/two-kids-logo.png" alt="Logo" class="navbar-logo">
+				 </a>
+				 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					 <span><i id="bar" class="fa-solid fa-bars"></i></span>
+				 </button>
+				 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					 <ul class="navbar-nav ms-auto">
+						 <li class="nav-item">
+							 <a class="nav-link active" href="#">Home</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="shop.html">Shop</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="reviews.html">Reviews</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="about.html">About</a>
+						 </li>
+						 <li class="nav-item">
+							 <a class="nav-link" href="contact.html">Contact</a>
+						 </li>
+						 <li class="nav-item d-flex gap-3 ms-3 align-items-center">
+							 <a class="nav-link" href="cart.html">
+								 <i class="fa-solid fa-cart-shopping"></i>
+							 </a>
+						 </li>
+					 </ul>
+				 </div>
+			 </div>
+		 </nav>
+
+		 <h2>Complete Your Purchase</h2>
+		 <form id="payment-form">
+			 <div class="form-group">
+				 <label for="customer-name">Full Name</label>
+				 <input type="text" id="customer-name" placeholder="John Doe" required>
+			 </div>
+			 <div class="form-group">
+				 <label for="momo-number">Mobile Money Number</label>
+				 <input type="tel" id="momo-number" placeholder="e.g. 097XXXXXXXX" required>        
+			 </div>
+			 <div class="form-group">
+				 <label for="amount">Amount (ZMW)</label>
+				 <input type="number" id="amount" value="" readonly>
+			 </div>
+			 <button type="submit" id="submit-btn" class="btn btn-momo">Pay with Mobile Money</button>
+			 <div id="message" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
+		 </form>
+
+		 <div class="divider">OR</div>
+
+		 <!-- Placeholder for your future Card Gateway -->
+		 <button type="button" class="btn btn-card" onclick="alert('Card gateway integration coming soon!')">
+				 Pay with Card
+		 </button>
+
+		 <!-- footer -->
+		 <footer class="mt-5 py-4" style="background-color: #003B73; color: #ffffff;">
+			 <div class="container">
+
+				 <div class="row mb-3 justify-content-between">            
+					 <div class="col-lg-5 col-md-6 col-12 mb-md-0">
+						 <img src="static/images/two-kids-logo.png" alt="Two Kids Design Logo" class="mb-2" style="max-width: 120px;">
+						 <p class="small mb-0 opacity-75">At Two Kids Design, we create fun and professionally crafted digital products for crafters, entrepreneurs, and print-on-demand businesses.</p>
+					 </div>
+
+					 <div class="col-lg-3 col-md-6 col-12">
+						 <h6 class="mb-2 fw-bold text-uppercase">Need Help?</h6>
+						 <ul class="list-unstyled footer-links text-uppercase small mb-0">
+							 <li class="mb-2">
+								 <a href="contact.html" class="contact-link text-decoration-none">Contact Us</a>                                                    
+							 </li>
+							 <li class="mb-2">
+								 <a href="mailto:anninachilombe@gmail.com" class="contact-link text-decoration-none text-lowercase">anninachilombe@gmail.com</a>
+							 </li>
+							 <li class="mb-2">
+								 <a href="tel:+260772666428" class="contact-link text-decoration-none">+260772666428</a>
+							 </li>
+						 </ul>
+					 </div>
+				 </div>
+
+				 <hr class="my-3 opacity-25">
+
+				 <div class="row align-items-center text-center text-md-start">
+					 <div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0">
+														                                                     <img src="static/images/Pay online securely payment methods options.png" alt="Accepted Payment Methods" style="width: 200px; max-height: 100px;">
+					 </div>
+
+					 <div class="col-lg-4 col-md-4 col-12 mb-2 mb-md-0 text-md-center">
+						 <p class="mb-0 small opacity-75">© 2026 Two Kids Design. All Rights Reserved.</p>
+					 </div>
+
+					 <div class="col-lg-4 col-md-4 col-12 text-md-end social-icons">
+						 <a href="https://web.facebook.com/TwoKidsDesign/" class="text-white me-2"><i class="fa-brands fa-facebook"></i></a>
+						 <a href="https://www.instagram.com/designtwokids/" class="text-white"><i class="fa-brands fa-square-instagram"></i></a>
+					 </div>
+				 </div>
+			 </div>
+		 </footer>
+
+		  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+			  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+			  crossorigin="anonymous"></script>
+		  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+					  integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+					  crossorigin="anonymous"></script>
+		  <script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
+		  <script src="payment.js"></script>
+	 </body>
+</html>

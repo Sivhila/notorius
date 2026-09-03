@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=evice-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Cart</title>
 		<link rel="stylesheet" href="static/style.css">
 
@@ -135,57 +135,8 @@
 							<td scope="col">Total</td>
 						</tr>
 					</thead>
-
 					<tbody>
-						<tr>
-							<td>
-								<a href="#" class="text-danger fs-5"><i class="fas fa-trash-alt"></i></a>
-							</td>
-							<td>
-								<img src="static/apparel.png" alt="Cart Image" class="img-fluid rounded shadow-sm" style="max-width: 80px;">
-							</td>
-							<td class="text-start">
-								<p class="mb-0 fw-bold">Awesome Apparel Design</p>
-							</td>
-							<td>$5.00</td>
-							<td>
-								<input class="form-control text-center mx-auto" value="1" type="number" min="1" style="max-width: 70px;">
-							</td>
-							<td class="fw-bold text-primary">$5.00</td>
-						</tr>
-
-						<!-- Item 2 -->
-						<tr>
-							<td><a href="#" class="text-danger fs-5"><i class="fas fa-trash-alt"></i></a></td>
-							<td>
-								<img src="static/apparel.png" alt="Cart Image" class="img-fluid rounded shadow-sm" style="max-width: 80px;">
-							</td>
-							<td class="text-start">
-								<p class="mb-0 fw-bold">Awesome Apparel Design</p>
-							</td>
-							<td>$5.00</td>
-							<td>
-								<input class="form-control text-center mx-auto" value="1" type="number" min="1" style="max-width: 70px;">
-							</td>
-							<td class="fw-bold text-primary">$5.00</td>
-						</tr>
-
-						<!-- Item 3 -->
-						<tr>
-							<td><a href="#" class="text-danger fs-5"><i class="fas fa-trash-alt"></i></a></td>
-							<td>
-								<img src="static/apparel.png" alt="Cart Image" class="img-fluid rounded shadow-sm" style="max-width: 80px;">
-							</td>
-							<td class="text-start">
-								<p class="mb-0 fw-bold">Awesome Apparel Design</p>
-							</td>
-							<td>$5.00</td>
-							<td>
-								<input class="form-control text-center mx-auto" value="1" type="number" min="1" style="max-width: 70px;">
-							</td>
-							<td class="fw-bold text-primary">$5.00</td>
-						</tr>
-
+						<!-- JavaScript will inject the rows here -->
 					</tbody>
 				</table>
 			</div>
@@ -260,6 +211,58 @@
 			   integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
 			   crossorigin="anonymous"></script>
 		<script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', loadCart);
+			
+			function loadCart() {
+				let cart = JSON.parse(localStorage.getItem('cart')) || [];
+		        	let container = document.getElementById('cart-items-container');
+		        	let cartTotalDisplay = document.querySelector('.d-flex.justify-content-between.border-bottom h6:last-child');
+
+				let total = 0;
+	    			container.innerHTML = ''; // Clear out any placeholder HTML
+
+				cart.forEach((item, index) => {
+					let itemTotal = item.price * item.qty;
+					total += itemTotal;
+
+					container.innerHTML += `
+						<tr>
+							<td><a href="#" class="text-danger fs-5" onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i></a></td>
+							<td><img src="${item.image}" alt="Cart Image" class="img-fluid rounded shadow-sm" style="max-width: 80px;"></td>
+							<td class="text-start"><p class="mb-0 fw-bold">${item.name}</p></td>
+							<td>$${item.price.toFixed(2)}</td>
+							<td>
+								<input class="form-control text-center mx-auto" value="${item.qty}" type="number" min="1" style="max-width: 70px;" onchange="updateQty(${index}, this.value)">
+							</td>
+							<td class="fw-bold text-primary">$${itemTotal.toFixed(2)}</td>
+						</tr>
+					`;
+				});
+
+				// Update the final total at the bottom of the page
+				if (cartTotalDisplay) {
+					cartTotalDisplay.innerText = `$${total.toFixed(2)}`;
+				}
+			}
+
+			// Helper function to handle quantity changes directly in the cart
+			function updateQty(index, newQty) {
+	    			let cart = JSON.parse(localStorage.getItem('cart'));
+    				cart[index].qty = parseInt(newQty);
+    				localStorage.setItem('cart', JSON.stringify(cart));
+	    			loadCart(); // Reload the cart to refresh the totals
+			}
+
+			// Helper function to remove an item
+			function removeItem(index) {
+	    		let cart = JSON.parse(localStorage.getItem('cart'));
+	    		cart.splice(index, 1); // Remove the item from the array
+	    		localStorage.setItem('cart', JSON.stringify(cart));
+	    		loadCart(); 
+			}
+		
+		</script>
 	</body>
 </html>
 
