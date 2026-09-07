@@ -111,16 +111,16 @@
 					<img id="main-product-image" class="img-fluid w-100 pb-2 border rounded" src="" id="MainImg" alt="Main Product Mockup">
 					<div class="small-img-group mt-2 d-flex justify-content-between">
 						<div class="small-img-col">
-							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 1">
+							<img id="smallimg" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 1">
 						</div>
 						<div class="small-img-col">
-							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 2">
+							<img id="smallimg" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 2">
 						</div>
 						<div class="small-img-col">
-							<img id="main-product-image" src="" width="100%" class="small-img img-fluid borded rounded" alt="Preview 3">
+							<img id="smallimg" src="" width="100%" class="small-img img-fluid borded rounded" alt="Preview 3">
 						</div>
 						<div class="small-img-col">
-							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Preview 4">
+							<img id="smallimg" src="" width="100%" class="small-img img-fluid border rounded" alt="Preview 4">
 						</div>
 					</div>
 				</div>
@@ -131,9 +131,8 @@
 					<h3 id="product-price"></h3>
 
 					<div class="d-flex gap-3 mb-5">
-						<button class="btn btn-add-cart text-uppercase w-50 text-center"
-							onclick="addToCart('Awesome Design Name', 5.00, 'static/apparel.png')">Add to Cart</button>
-						<button class="btn btn-buy-now text-uppercase w-50" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
+						<button id="add-tp-cart-btn" class="btn btn-add-cart text-uppercase w-50 text-center" onclick="addToCart('Awesome Design Name', 5.00, 'static/apparel.png')">Add to Cart</button>
+						<button id="buy-now-btn" class="btn btn-buy-now text-uppercase w-50" onclick="window.location.href='checkout.html'">Buy Now</button>
 					</div>
 
 					<h5 class="fw-bold mb-3">Product Description</h5>
@@ -319,28 +318,40 @@
 			// 3. Update the page if the data exists
 			if (productImg) {
 				document.getElementById('main-product-image').src = productImg;
-				document.getElementById('product-name').innerText = productName.replace('+', '');
+				document.getElementById('product-name').innerText = productName.replace(/\+/g, ' ');
 				document.getElementById('product-price').innerText = "$" + productPrice;
+				
+				// Attach dynamic price to the Buy Now button 
+				document.getElementById('buy-now-btn').onclick = function() {
+					window.location.href = 'checkout.html?amount=K{productPrice}';
+				};
+
+				// Attach dynamic data to the Add to Cart button
+				document.getElementById('add-to-cart-btn').onclick = function() {
+					addToCart(productName.replace(/\+/g, ' '), productPrice, productImg);
+				};
 			} else {
-				//Fallback if someone visits product.html directly without clicking a link 
 				document.getElementById('product-name').innerText = "Product Not Found";
 			}
-		</script>
-		<script>
+
+			// 3. The Add to Cart Logic
 			function addToCart(name, price, image) {
 				let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-				let existingItem = cart.find(item => item.name === name);
-				if (existingItem) {
-					existingItem) {
-						existingItem.qty += 1;
-					} else {
-						cart.push({ name: name, price: price, image: image, qty: 1});
-					}
-					
-					localStorage.setItem('cart', JSON.stringify(cart));
-					window.location.href == 'cart.html';
-				}
+				// Add the new item to the cart array
+				cart.push({
+					name: name,
+					price: parseFloat(price),
+					img: img,
+					quantity: 1
+				});
+
+				// Save the updated cart back to the browser's memory
+				localStorage.setItem('cart', JSON.stringify(cart));
+
+				// Redirect the user to the cart page
+				window.location.href = 'cart.html';
+			}
 		</script>
 
 	</body>
