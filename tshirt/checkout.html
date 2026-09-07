@@ -35,7 +35,7 @@
 				 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 					 <ul class="navbar-nav ms-auto">
 						 <li class="nav-item">
-							 <a class="nav-link active" href=home.html">Home</a>
+							 <a class="nav-link active" href="home.html">Home</a>
 						 </li>
 						 <li class="nav-item">
 							 <a class="nav-link" href="shop.html">Shop</a>
@@ -159,7 +159,7 @@
 					  if (cartData) {
 						  const cart = JSON.parse(cartData);
 						  // Loop through the cart array and add up (price * quantity)
-						  finalAmount = cart.reduce((total, item) = {
+						  finalAmount = cart.reduce((total, item) => {
 							  return total + (parseFloat(item.price) * (item.quantity || 1));
 						  }, 0);
 					  }

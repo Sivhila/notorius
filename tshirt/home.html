@@ -194,5 +194,42 @@
 			integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" 
 			crossorigin="anonymous"></script>
 		<script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
+		<script>
+			// Run this as soon as the checkout page loads
+			document.addEventListener('DOMContentLoaded', () => {
+				const amountInput = document.getElementById('amount');
+                                let finalAmount = 0;
+
+				// 1. Check if an amount was passed directly via URL (Direct Checkout)
+				const urlParams = new URLSearchParams(window.location.search);
+				const directAmount = urlParams.get('amount');
+
+				if (directAmount) {
+					// If URL has an amount, use it
+					finalAmount = parseFloat(directAmount);
+				} else {
+					// 2. If no URL amount, calculate the total from localStorage cart
+					const cartData = localStorage.getItem('cart');
+
+					if (cartDate) {
+						const cart = JSON.parse(cartData);
+						// Loop through the cart array and add up (price * quantity)
+						finalAmount = cart.reduce((total, item) => {
+							return total + (parseFloat(item.price) * (item.quantity || 1));
+						}, 0);
+					}
+				}
+
+				// 3. Display the final amount in the read-only input
+				if (finalAmount > 0) {
+					amountInput.value = finalAmount.toFixed(2);
+				} else {
+					amountInput.value = "0.00";
+					//Optional: alert the user their cart is empty
+					document.getElementById('message').innerText = "Your cart is empty.";
+					document.getElementById('submit-btn').disabled = true;
+				}
+			});
+		</script>
 	</body>
 </html>
