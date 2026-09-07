@@ -108,32 +108,32 @@
 		<section class="container sproduct my-5 pt-5">
 			<div class="row mt-5">
 				<div class="col-lg-5 col-md-12 col-12 mb-5">
-					<img class="img-fluid w-100 pb-2 border rounded" src="static/apparel.png" id="MainImg" alt="Main Product Mockup">
+					<img id="main-product-image" class="img-fluid w-100 pb-2 border rounded" src="" id="MainImg" alt="Main Product Mockup">
 					<div class="small-img-group mt-2 d-flex justify-content-between">
 						<div class="small-img-col">
-							<img src="static/apparel.png" width="100%" class="small-img img-fluid border rounded" alt="Mockup 1">
+							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 1">
 						</div>
 						<div class="small-img-col">
-							<img src="static/apparel.png" width="100%" class="small-img img-fluid border rounded" alt="Mockup 2">
+							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Mockup 2">
 						</div>
 						<div class="small-img-col">
-							<img src="static/apparel.png" width="100%" class="small-img img-fluid borded rounded" alt="Preview 3">
+							<img id="main-product-image" src="" width="100%" class="small-img img-fluid borded rounded" alt="Preview 3">
 						</div>
 						<div class="small-img-col">
-							<img src="static/apparel.png" width="100%" class="small-img img-fluid border rounded" alt="Preview 4">
+							<img id="main-product-image" src="" width="100%" class="small-img img-fluid border rounded" alt="Preview 4">
 						</div>
 					</div>
 				</div>
 
 				<div class="col-lg-6 col-md-12 col-12 ms-lg-5">
 					<h6 class="text-muted text-uppercase small">Home / Apparel Design</h6>
-					<h2 class="fw-bold mt-2">Awesome Design Name</h2>
-					<h3 class="fw-bold text-primary mb-4">$5.00</h3>
+					<h2 id="product-name"></h2>
+					<h3 id="product-price"></h3>
 
 					<div class="d-flex gap-3 mb-5">
 						<button class="btn btn-add-cart text-uppercase w-50 text-center"
 							onclick="addToCart('Awesome Design Name', 5.00, 'static/apparel.png')">Add to Cart</button>
-						<button class="btn btn-buy-now text-uppercase w-50">Buy Now</button>
+						<button class="btn btn-buy-now text-uppercase w-50" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
 					</div>
 
 					<h5 class="fw-bold mb-3">Product Description</h5>
@@ -163,7 +163,7 @@
 			</div>
 		</section>
 
-		 <section id="featured" class="w-100 py-5">
+		<section id="featured" class="w-100 py-5">
 			 <div class="container text-center mb-5">
 				 <h3 class="section-title"><span>Related Products</span></h3>
 			 </div>
@@ -183,7 +183,7 @@
 							 </div>
 							 <h5 class="p-name">Design Name</h5>
 							 <h4 class="p-price">$5.00</h4>
-							 <button class="buy-btn text-uppercase">Buy Now</button>
+							 <button class="buy-btn text-uppercase" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
 						 </div>
 					 </div>
 
@@ -200,7 +200,7 @@
 							 </div>
 							 <h5 class="p-name">Design Name</h5>
 							 <h4 class="p-price">$5.00</h4>
-							 <button class="buy-btn text-uppercase">Buy Now</button>
+							 <button class="buy-btn text-uppercase" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
 						 </div>
 					 </div>
 
@@ -217,7 +217,7 @@
 							 </div>
 							 <h5 class="p-name">Design Name</h5>
 							 <h4 class="p-price">$5.00</h4>
-							 <button class="buy-btn text-uppercase">Buy Now</button>
+							 <button class="buy-btn text-uppercase" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
 						 </div>
 					 </div>
 
@@ -234,13 +234,12 @@
 							 </div>
 							 <h5 class="p-name">Design Name</h5>
 							 <h4 class="p-price">$5.00</h4>
-							 <button class="buy-btn text-uppercase">Buy Now</button>
+							 <button class="buy-btn text-uppercase" onclick="window.location.href='checkout.html?amount=5.00'">Buy Now</button>
 						 </div>
 					 </div>
-
-
-
-												                                        
+				 </div>
+			 </div>
+		</section>
 
 		<!-- footer -->
 		<footer class="mt-5 py-4" style="background-color: #003B73; color: #ffffff;">
@@ -306,6 +305,25 @@
 			}
 			smallimg[3].onclick = function() {
 				MainImg.src = smallimg[3].src;
+			}
+		</script>
+		<script>
+			// 1. Get the parameters from the URL
+			const urlParams = new URLSearchParams(window.location.search);
+			
+			// 2. Extract the speciic data
+			const productImg = urlParams.get('img');
+			const productName = urlParams.get('name');
+			const productPrice = urlParams.get('price');
+			
+			// 3. Update the page if the data exists
+			if (productImg) {
+				document.getElementById('main-product-image').src = productImg;
+				document.getElementById('product-name').innerText = productName.replace('+', '');
+				document.getElementById('product-price').innerText = "$" + productPrice;
+			} else {
+				//Fallback if someone visits product.html directly without clicking a link 
+				document.getElementById('product-name').innerText = "Product Not Found";
 			}
 		</script>
 		<script>

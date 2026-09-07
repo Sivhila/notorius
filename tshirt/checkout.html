@@ -10,11 +10,15 @@
 		 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 		 <link href="https://pro.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 		 <style>
-			body { padding: 20px; }
+			body { font-family: sans-serif; max-width: 400px; margin: 40px auto; padding: 20px; }
 			.form-group { margin-bottom: 15px; }
-			input { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
-			button { width: 100%; padding: 12px; background: #4CAF50; color: white; border: none; cursor: pointer; }
-			button:hover { background: #45a049; }
+			input { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+			.btn { width: 100%; padding: 12px; color: white; border: none; cursor: pointer; border-radius: 4px; font-size: 16px; margin-bottom: 10px; }
+			.btn-momo { background: #FFCC00; color: #333; font-weight: bold; } /* Standard Mobile Money Yellow */
+			.btn-momo:hover { background: #E6B800; }
+			.btn-card { background: #0056b3; } /* Blue for future card gateway */
+			.btn-card:hover { background: #004494; }
+			.divider { text-align: center; margin: 20px 0; color: #888; font-size: 14px; }
 		 </style>
 	 
 	 </head>
@@ -31,7 +35,7 @@
 				 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 					 <ul class="navbar-nav ms-auto">
 						 <li class="nav-item">
-							 <a class="nav-link active" href="#">Home</a>
+							 <a class="nav-link active" href=home.html">Home</a>
 						 </li>
 						 <li class="nav-item">
 							 <a class="nav-link" href="shop.html">Shop</a>
@@ -57,6 +61,7 @@
 
 		 <h2>Complete Your Purchase</h2>
 		 <form id="payment-form">
+			 <h3 class="fw-bold text-center">Pay with Mobile Money</h3>
 			 <div class="form-group">
 				 <label for="customer-name">Full Name</label>
 				 <input type="text" id="customer-name" placeholder="John Doe" required>
@@ -73,9 +78,10 @@
 			 <div id="message" style="margin-top: 15px; text-align: center; font-weight: bold;"></div>
 		 </form>
 
-		 <div class="divider">OR</div>
+		 <div class="fw-bold text-center" class="divider">OR</div>
 
 		 <!-- Placeholder for your future Card Gateway -->
+		 <h3 class="fw-bold text-center">Pay with Mobile Money</h3>
 		 <button type="button" class="btn btn-card" onclick="alert('Card gateway integration coming soon!')">
 				 Pay with Card
 		 </button>
@@ -133,5 +139,42 @@
 					  crossorigin="anonymous"></script>
 		  <script src="https://kit.fontawesome.com/e2d5712343.js" crossorigin="anonymous"></script>
 		  <script src="payment.js"></script>
+		  <script>
+			  // Run this as soon as the checkout page loads
+			  document.addEventListener('DOMContentLoaded', () => {
+				  const amountInput = document.getElementById('amount');
+				  let finalAmount = 0;
+
+				  // 1. Check if an amount was passed directly via URL (Direct Checkout)
+				  const urlParams = new URLSearchParams(window.location.search);
+				  const directAmount = urlParams.get('amount');
+
+				  if (directAmount) {
+					  // If URL has an amount, use it
+					  finalAmount = parseFloat(directAmount);
+				  } else {
+					  // 2. If no URL amount, calculate the total from the localStorage cart
+					  const cartData = localStorage.getItem('cart');
+
+					  if (cartData) {
+						  const cart = JSON.parse(cartData);
+						  // Loop through the cart array and add up (price * quantity)
+						  finalAmount = cart.reduce((total, item) = {
+							  return total + (parseFloat(item.price) * (item.quantity || 1));
+						  }, 0);
+					  }
+				  }
+
+				  // 3. Display the final amount in the read-only input
+				  if (finalAmount > 0) {
+					  amountInput.value = finalAmount.toFixed(2);
+				  } else {
+					  amountInput.value = "0.00";
+					  // Optional: alert the user their cart is empty
+					  document.getElementById('message').innerText = "Your cart is empty.";
+					  document.getElementById('submit-btn').disabled = true;
+				  }
+			  });
+		  </script>
 	 </body>
 </html>
