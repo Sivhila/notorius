@@ -281,61 +281,81 @@
 				const productId = urlParams.get('id');
 
 				//. Find matching product from products.js
-				const product = products.find(p => p.id === productId);
+				const product = typeof products !== 'undefined' ? products.find(p => p.id === productId) : null;
 
 				if (!product) {
-					document.getElementById('product-name').innerText = "Product Not Found";
+					const nameElem = document.getElementById('product-name');
+					if (nameElem) nameElem.innerText = "Product Not Found";
 					return;
 				}
 
 				// Populate Main Product Details
 				const mainImg = document.getElementById('main-product-image');
-				mainImg.src = product.mainImg;
-				document.getElementById('product.name').innerText = product.name;
-				document.getElementById('product.price').innerText = `$${product.price.toFixed(2)}`;
+				if (nameImg) mainImg.src = product.mainImg;
+				
+				const nameElem = document.getElementById('product-name');
+				if (nameElem) nameElem.innerText = product.name;
+
+				const priceElem = document.getElementById('product-price');
+				if (priceElem) priceElem.innerText = `$${product.price.toFixed(2)}`;
 
 				const descElem = document.getElementById('product-description');
 				if (descElem) descElem.innerText = product.description;
 
 				// Dynamically Render Thumbnails
 				const thumbnailContainer = document.getElementById('thumbnail-container');
-				thumbnailContainer.innerHTML = ''; // Clear container
+				if (thumbnailContainer) {
+					thumbnailContainer.innerHTML = ''; // Clear container
 
-				product.thumbnails.forEach(imgPath => {
-					const colDiv = document.createElement('div');
-					colDiv.className = 'small-img-col';
+					product.thumbnails.forEach(imgPath => {
+						const colDiv = document.createElement('div');
+						colDiv.className = 'small-img-col';
 
-					const imgTag = document.createElement('img');
-					imgTag.src = imgPath;
-					imgTag.className = 'small-img img-fluid border rounded';
-					imgTag.style.cursor = 'pointer';
+						const imgTag = document.createElement('img');
+						imgTag.src = imgPath;
+						imgTag.className = 'small-img img-fluid border rounded';
+						imgTag.style.cursor = 'pointer';
 
-					// Swap main image on thumbnail click
-					imgTag.onclick = () => {
-						mainImg.src = imgPath;
-					};
+						// Swap main image on thumbnail click
+						imgTag.onclick = () => {
+							if (mainImg) mainImg.src = imgPath;
+						};
 
-					colDiv.appendChild(imgTag);
-					thumbnailContainer.appendChild(colDiv);
-				});
+						colDiv.appendChild(imgTag);
+						thumbnailContainer.appendChild(colDiv);
+					});
+				}
 
 				// Button Actions
-				document.getElementById('buy-now-btn').onclick = () => {
-					window.location.href = `checkout.html?amount=${product.price}`;
-				};
+				const buyNowBtn = document.getElementById('buy-now-btn');
+				if (buyNowBtn) {
+					buyNowBtn.onclick = () => {
+						window.location.href = `checkout.html?amount=${product.price}`;
+					};
+				}
 
-				document.getElementById('add-to-cart-btn').onclick = () => {
-					let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        				cart.push({
-		            			id: product.id,
-		            			name: product.name,
-		            			price: product.price,
-		            			img: product.mainImg,
-		            			quantity: 1
-					});
-					localStorage.setItem('cart', JSON.stringify(cart));
-					window.location.href = 'cart.html';
-				};
+				// Add to Cart Button Action
+				const addToCartBtn = document.getElementById('add-to-cart-btn');
+				if (addToCartBtn) {
+					addToCartBtn.onclick = () => {
+						let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        				
+						const existingItem = cart.find(item => item.id === product.id);
+						if (existingItem) {
+							existingItem.quantity += 1;
+						} else {
+							cart.push({
+		            					id: product.id,
+		            					name: product.name,
+		            					price: product.price,
+		            					img: product.mainImg,
+		            					quantity: 1
+							});
+						}
+						localStorage.setItem('cart', JSON.stringify(cart));
+						window.location.href = 'cart.html';
+					};
+				}
 			});
 		</script>
 	</body>
